@@ -73,7 +73,7 @@ public class MouthMovement : MonoBehaviour {
     {
 
          spriteToSet = Mathf.RoundToInt(clipLoudness);
-        if (mouthSprites.Length >= spriteToSet)
+        if (mouthSprites.Length >= spriteToSet && spriteToSet > 0 && mouthSprites[spriteToSet] != null)
             mouthSpriteRenderer.sprite = mouthSprites[spriteToSet];
     }
 

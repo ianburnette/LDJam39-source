@@ -66,6 +66,10 @@ public class ThirdPersonCharacterCustom : MonoBehaviour {
         }
         if (movement.magnitude > movementMinimum)
             rb.AddForce(movement * moveSpeed * Time.deltaTime);
+        else
+        {
+            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+        }
         Vector3 normalizedVel = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         transform.LookAt(transform.position + normalizedVel);
         Animate(normalizedVel);

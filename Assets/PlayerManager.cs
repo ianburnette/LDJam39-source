@@ -12,6 +12,19 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] Transform currentPlayer;
     [SerializeField] BatteryScript batt;
 
+    public Transform CurrentPlayer
+    {
+        get
+        {
+            return currentPlayer;
+        }
+
+        set
+        {
+            currentPlayer = value;
+        }
+    }
+
     private void OnEnable()
     {
         publicPlayerManager = this;

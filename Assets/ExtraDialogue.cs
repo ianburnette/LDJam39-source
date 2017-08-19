@@ -24,7 +24,7 @@ public class ExtraDialogue : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        print("other is " + other.transform.tag + " and " + other.transform.name);
+      //  print("other is " + other.transform.tag + " and " + other.transform.name);
         if (other.transform.tag == "Player" && other.transform.name != "player_PT" && !done && primeForPT)
         {
             primed = true;

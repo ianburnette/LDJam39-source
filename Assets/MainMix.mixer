@@ -65,11 +65,12 @@ AudioMixerSnapshotController:
   m_SnapshotID: d3cf0292cea93a24696be0d5108e260f
   m_FloatValues:
     7daae6212fdaa0d4bb37764d74d51ccd: 0
-    35f41b74fe1b6f84ab8aa5158783ec58: -24.900742
+    35f41b74fe1b6f84ab8aa5158783ec58: -3.184112
     2d1e5bc76936bef4c8277bd10af7d42e: 10
     31b5dd981beba9b48bdec7f49b6c1ff3: 2.214
-    766d212dd53e5194cadf34b573007315: 0
+    766d212dd53e5194cadf34b573007315: 20
     109d85fd47076c446908fb0ab7a72275: -80
+    eb63fd6f7ca39b34780719b99236db3c: 4.648096
   m_TransitionOverrides: {}
 --- !u!243 &243068099830049368
 AudioMixerGroupController:
@@ -84,7 +85,6 @@ AudioMixerGroupController:
   m_Pitch: 400206dfa42231049918372297589a65
   m_Effects:
   - {fileID: 244343676866851170}
-  - {fileID: 244894763989938790}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -157,7 +157,7 @@ AudioMixerEffectController:
   m_EffectName: Send
   m_MixLevel: 7daae6212fdaa0d4bb37764d74d51ccd
   m_Parameters: []
-  m_SendTarget: {fileID: 244894763989938790}
+  m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
 --- !u!244 &244682566100296630
@@ -170,33 +170,6 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: 0f149d74b7abd4d4f9e705c2df0566a7
   m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
---- !u!244 &244894763989938790
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_EffectID: d7c81539914b146478c8a1348f3813b8
-  m_EffectName: Duck Volume
-  m_MixLevel: 3101eb6861a815640b2bc80a333b4327
-  m_Parameters:
-  - m_ParameterName: Threshold
-    m_GUID: 109d85fd47076c446908fb0ab7a72275
-  - m_ParameterName: Ratio
-    m_GUID: 2d1e5bc76936bef4c8277bd10af7d42e
-  - m_ParameterName: Attack Time
-    m_GUID: 31b5dd981beba9b48bdec7f49b6c1ff3
-  - m_ParameterName: Release Time
-    m_GUID: 6e0e812e9aadf84469f9709641997510
-  - m_ParameterName: Make-up Gain
-    m_GUID: 31ff917ca9752a1409ea4af3a4634eab
-  - m_ParameterName: Knee
-    m_GUID: 4dec0a303f729ab4193f45e76aa34455
-  - m_ParameterName: Sidechain Mix
-    m_GUID: f300107d38b017947b79245813ffee76
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0

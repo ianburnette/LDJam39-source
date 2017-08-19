@@ -35,7 +35,7 @@ public class Camera_Selector : MonoBehaviour {
 
     void PlayerTargetChange(Transform newPlayer)
     {
-        print("target changing");
+        //print("target changing");
         currentTarget = newPlayer;
         currentCameraScript.SetTarget(currentTarget);
     }

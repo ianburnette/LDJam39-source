@@ -10,6 +10,7 @@ public class ThirdPersonUserControlCustom : MonoBehaviour {
     [SerializeField] OTcontrols ot_Character;
     [SerializeField] QTControls qt_Character;
         [SerializeField] private Transform m_Cam;                  // A reference to the main camera in the scenes transform
+    [SerializeField] private Transform new_Cam;
         [SerializeField] private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
@@ -40,9 +41,10 @@ public class ThirdPersonUserControlCustom : MonoBehaviour {
 
         void CameraSwitch(Camera newCam)
         {
-            print("camera has switched to " + newCam);
-            m_Cam = newCam.transform;
-        }
+        //  print("camera has switched to " + newCam);
+        //m_Cam = newCam.transform;
+        new_Cam = newCam.transform;
+    }
 
         private void Start()
         {
@@ -69,6 +71,10 @@ public class ThirdPersonUserControlCustom : MonoBehaviour {
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Action");
             }
+            if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+        {
+            m_Cam = new_Cam;
+        }
         }
 
 

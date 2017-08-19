@@ -39,7 +39,7 @@ public class BallUserControlCustom : MonoBehaviour {
         // get the transform of the main camera
         if (Camera.main != null)
         {
-            cam = Camera.main.transform;
+        //    cam = Camera.main.transform;
         }
         else
         {

@@ -12,14 +12,40 @@ public class PlayerSwitch : MonoBehaviour {
     [SerializeField] float checkTime;
     [SerializeField] float minDistance;
     [SerializeField] Behaviour[] toDisableWhenInactive;
-    [SerializeField] bool playAudio;
+    [SerializeField] bool playAudio, excludePT;
     [SerializeField] int audioIndex;
+    
+    public float MinDistance
+    {
+        get
+        {
+            return minDistance;
+        }
+
+        set
+        {
+            minDistance = value;
+        }
+    }
+
+    public bool ExcludePT
+    {
+        get
+        {
+            return excludePT;
+        }
+
+        set
+        {
+            excludePT = value;
+        }
+    }
 
     private void OnEnable()
     {
         if (playAudio)
         {
-            print("playing " + audioIndex);
+          //  print("playing " + audioIndex);
             MasterChoreographer.publicChoreographer.PlayClip(audioIndex);
             playAudio = false;
             if (audioIndex==28)//finale
@@ -30,8 +56,21 @@ public class PlayerSwitch : MonoBehaviour {
         otherPlayers = new Transform[playerParent.childCount];
         for (int i = 0; i<playerParent.childCount; i++)
         {
+          //  print("other exclude =  " + playerParent.GetChild(i).GetComponent<PlayerSwitch>().ExcludePT);
+            if (transform.name == "player_PT" && playerParent.GetChild(i).GetComponent<PlayerSwitch>().ExcludePT)
+            {
+                otherPlayers[i] = playerParent.GetChild(0);
+             //   print("excluding " + playerParent.GetChild(i) + " and including " + playerParent.GetChild(0));
+
+            }
+            else if (playerParent.GetChild(i).name != "player_PT" && excludePT)
+                otherPlayers[i] = playerParent.GetChild(i);
+            else if (!excludePT)
+                otherPlayers[i] = playerParent.GetChild(i);
+            else
+                otherPlayers[i] = playerParent.GetChild(i - 1);
             //Transform cur = playerParent.GetChild(i);
-            otherPlayers[i] = playerParent.GetChild(i);
+
         }
         InvokeRepeating("CheckForOtherPlayers", checkTime, checkTime);
         foreach (Behaviour behav in toDisableWhenInactive)
@@ -46,7 +85,7 @@ public class PlayerSwitch : MonoBehaviour {
     void Update () {
 		if (Input.GetButtonDown("Switch"))
         {
-            print("pressed switch");
+          //  print("pressed switch");
             if (canSwitch)
             {
                 SwitchPlayer(currentClosest);
@@ -65,12 +104,12 @@ public class PlayerSwitch : MonoBehaviour {
 
     float FindClosestPlayer()
     {
-        print("finding closest");
+     //   print("finding closest");
         Transform closestPlayer = otherPlayers[0];
         float currentDistance = 100f;
         for (int i = 0; i < otherPlayers.Length; i++)
         {
-            if (otherPlayers[i] != transform)
+            if (otherPlayers[i] != transform && otherPlayers[i].transform != null)
             {
                 float dist = Vector3.Distance(transform.position, otherPlayers[i].GetComponent<BatteryHelper>().BatteryTransform.position);
                 if (dist < currentDistance)
